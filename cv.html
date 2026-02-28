@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - ณัฐวุฒิ บัวกล้า</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Kanit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --bg-color: #ffffff;
+            --sidebar-bg: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #e2e8f0;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+            line-height: 1.5;
+        }
+
+        /* A4 Paper Size Setup */
+        .cv-container {
+            width: 210mm;
+            min-height: 297mm;
+            /* A4 aspect ratio */
+            background: var(--bg-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 35% 65%;
+            overflow: hidden;
+        }
+
+        /* Sidebar (Left Column) */
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            padding: 3rem 2rem;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .profile-img-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 2rem;
+            border: 4px solid white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            background-color: #cbd5e1;
+            background-image: url('https://placehold.co/150x150/2563eb/ffffff?text=NB');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .sidebar-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-item span:first-child {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        /* Main Content (Right Column) */
+        .main-content {
+            padding: 3rem 2.5rem;
+        }
+
+        .header {
+            margin-bottom: 3rem;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .profession {
+            font-size: 1.15rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .profile-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 1.5rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .role-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .company-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .duration {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            background: var(--sidebar-bg);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        .timeline-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .timeline-desc ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .timeline-desc li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Print Settings */
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+
+            .cv-container {
+                box-shadow: none;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+                width: 100%;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cv-container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="profile-img-container">
+                <div class="profile-img"></div>
+            </div>
+
+            <div class="sidebar-section">
+                <h2 class="sidebar-title">ข้อมูลติดต่อ</h2>
+                <div class="contact-item">
+                    <span>สถานที่</span>
+                    <span>มหาวิทยาลัยราชภัฏพิบูลสงคราม จ.พิษณุโลก</span>
+                </div>
+                <div class="contact-item">
+                    <span>เว็บไซต์ภาควิชา</span>
+                    <span>cpe.psru.ac.th</span>
+                </div>
+                <div class="contact-item">
+                    <span>แอปพลิเคชัน</span>
+                    <span>Dek Pibul</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h2 class="sidebar-title">ทักษะความเชี่ยวชาญ</h2>
+                <ul class="skill-list">
+                    <li>
+                        <div class="skill-name"><span>ภาวะผู้นำและการจัดการ</span><span>95%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 95%;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="skill-name"><span>Agile Methodology</span><span>85%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="skill-name"><span>Blockchain Technology</span><span>80%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="skill-name"><span>ฮาร์ดแวร์และซอฟต์แวร์</span><span>85%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="skill-name"><span>Soft Skills & การสื่อสาร</span><span>90%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%;"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h2 class="sidebar-title">ภาษา</h2>
+                <ul class="skill-list">
+                    <li>
+                        <div class="skill-name"><span>ภาษาไทย</span><span>ดีเยี่ยม (Native)</span></div>
+                    </li>
+                    <li>
+                        <div class="skill-name"><span>ภาษาอังกฤษ</span><span>ระดับดี</span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1 class="name">นายณัฐวุฒิ บัวกล้า</h1>
+                <div class="profession">นักศึกษาวิศวกรรมคอมพิวเตอร์ และประธานสโมสรนักศึกษา</div>
+                <p class="profile-text">
+                    นักศึกษาสาขาวิชาวิศวกรรมคอมพิวเตอร์
+                    ผู้มีความมุ่งมั่นในการเรียนรู้และพัฒนาทักษะทางด้านเทคโนโลยีควบคู่ไปกับการบริหารจัดการ
+                    มีความเป็นผู้นำสูง ได้รับความไว้วางใจให้ดำรงตำแหน่งประธานสโมสรนักศึกษา คณะเทคโนโลยีอุตสาหกรรม
+                    มุ่งเน้นการใช้ Agile Methodology ประยุกต์เทคโนโลยีดิจิทัล และยึดหลักธรรมาภิบาลเพื่อสร้างรากฐาน
+                    "Digital Identity" ของคณะ และผลักดันศักยภาพนักศึกษาเข้าสู่ยุคอุตสาหกรรม 4.0
+                </p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">ประสบการณ์การทำงาน / กิจกรรม</h2>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="role-title">ประธานสโมสรนักศึกษา</div>
+                            <div class="company-name">คณะเทคโนโลยีอุตสาหกรรม ม.ราชภัฏพิบูลสงคราม</div>
+                        </div>
+                        <div class="duration">ปีการศึกษา 2567 - 2568</div>
+                    </div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>บริหารจัดการและประสานงานกิจกรรมนักศึกษา
+                                สร้างความสัมพันธ์และการทำงานเป็นทีมระหว่างรหัสวิชาต่างๆ เพื่อลดความขัดแย้ง (Departmental
+                                Silos)</li>
+                            <li>เชื่อมโยงกิจกรรมสโมสรเข้ากับผลลัพธ์การเรียนรู้ระดับหลักสูตร (PLOs) เช่น
+                                ความรับผิดชอบต่อตนเอง สังคม และจรรยาบรรณวิชาชีพ</li>
+                            <li>ประยุกต์ใช้แอปพลิเคชัน "เด็กพิบูล" (Dek Pibul)
+                                ในระบบเลือกตั้งและการสื่อสารร่วมกับมหาวิทยาลัย เพื่อความโปร่งใสและตรวจสอบได้</li>
+                            <li>ผลักดันการใช้ประโยชน์ทางเทคโนโลยี โดยประสานการสร้าง "Digital Identity"
+                                ผ่านช่องทางเว็บไซต์และโซเชียลมีเดียของส่วนคณะ</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="role-title">ผู้ดำเนินโครงการ / พี่เลี้ยงค่ายพักแรม</div>
+                            <div class="company-name">กิจกรรมหุ่นยนต์ รุ่นที่ 2 ร่วมกับเครือข่าย SMTE</div>
+                        </div>
+                        <div class="duration">2567</div>
+                    </div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>เป็นพี่เลี้ยงในการถ่ายทอดความรู้ด้านระบบควบคุมและอัตโนมัติให้กับนักเรียนชั้นมัธยมศึกษาตอนปลาย
+                                (โรงเรียนพิษณุโลกพิทยาคม)</li>
+                            <li>ส่งเสริมทักษะการปฏิบัติงานจริงและทักษะการสื่อสาร (Communication Skills)
+                                ของนักศึกษาในสาขาให้ออกสู่ชุมชน</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">ประวัติการศึกษา</h2>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="role-title">ปริญญาตรี วิศวกรรมศาสตรบัณฑิต (วศ.บ.) สาขาวิชาวิศวกรรมคอมพิวเตอร์
+                            </div>
+                            <div class="company-name">คณะเทคโนโลยีอุตสาหกรรม มหาวิทยาลัยราชภัฏพิบูลสงคราม</div>
+                        </div>
+                        <div class="duration">2566 - ปัจจุบัน</div>
+                    </div>
+                    <div class="timeline-desc">
+                        <b>รหัสนักศึกษา:</b> 6612247046<br>
+                        <b>ความสนใจทางวิชาการ:</b> สถาปัตยกรรมบล็อกเชน, สัญญาอัจฉริยะ (Smart Contract) และคริปโตเคอเรนซี
+                        (อ้างอิงรายวิชา CPEN374)<br>
+                        <b>เป้าหมายทางวิชาชีพ:</b> วิศวกรซอฟต์แวร์, วิศวกรควบคุมดูแลระบบคอมพิวเตอร์
+                        หรือผู้ดูแลระบบและวิจัยนวัตกรรมใหม่ในสายงานดิจิทัล
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

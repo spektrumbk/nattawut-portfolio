@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #3b82f6;
+            --secondary: #8b5cf6;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Gradient Background */
+        .bg-glow {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15), transparent 60%);
+            z-index: -1;
+            pointer-events: none;
+            animation: pulse 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            padding: 8rem 5% 4rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--border-color);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .profile-img-container {
+            width: 350px;
+            height: 350px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            padding: 5px;
+            animation: morph 8s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background-color: var(--bg-color);
+            background-image: url('https://placehold.co/350x350/1e293b/f8fafc?text=Your+Photo');
+            background-size: cover;
+            background-position: center;
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+            0% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+
+            50% {
+                border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+            }
+
+            100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+        }
+
+        /* Section Headers */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        /* About / Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-img-1 {
+            background-image: url('https://placehold.co/600x400/1e293b/f8fafc?text=Project+1');
+        }
+
+        .project-img-2 {
+            background-image: url('https://placehold.co/600x400/1e293b/f8fafc?text=Project+2');
+        }
+
+        .project-img-3 {
+            background-image: url('https://placehold.co/600x400/1e293b/f8fafc?text=Project+3');
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Contact */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Animations on Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 4rem;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+            }
+
+            .profile-img-container {
+                width: 280px;
+                height: 280px;
+                margin: 0 auto;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-glow"></div>
+
+    <nav>
+        <div class="logo">Portfolio.</div>
+        <div class="nav-links">
+            <a href="#home">หน้าแรก</a>
+            <a href="#skills">ทักษะ</a>
+            <a href="#projects">ผลงาน</a>
+            <a href="#contact">ติดต่อ</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content reveal">
+            <h1 class="hero-title">สวัสดี, ฉันคือ <br><span>[ชื่อของคุณ]</span></h1>
+            <p class="hero-subtitle">นักพัฒนาเว็บไซต์ที่ชื่นชอบการสร้างสรรค์ประสบการณ์ดิจิทัลที่สวยงาม ใช้งานง่าย
+                และตอบโจทย์ธุรกิจ</p>
+            <div>
+                <a href="#projects" class="btn btn-primary">ดูผลงานของฉัน</a>
+                <a href="#contact" class="btn btn-outline">ติดต่อฉัน</a>
+            </div>
+        </div>
+        <div class="hero-image reveal">
+            <div class="profile-img-container">
+                <div class="profile-img"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title reveal">ทักษะ<span>ของฉัน</span></h2>
+        <div class="skills-grid">
+            <div class="skill-item reveal">
+                <div class="skill-icon">💻</div>
+                <h3>Frontend</h3>
+                <p style="color:var(--text-muted); font-size: 0.9rem;">HTML, CSS, JS, React</p>
+            </div>
+            <div class="skill-item reveal">
+                <div class="skill-icon">⚙️</div>
+                <h3>Backend</h3>
+                <p style="color:var(--text-muted); font-size: 0.9rem;">Node.js, Express, SQL</p>
+            </div>
+            <div class="skill-item reveal">
+                <div class="skill-icon">🎨</div>
+                <h3>Design</h3>
+                <p style="color:var(--text-muted); font-size: 0.9rem;">Figma, UI/UX Design</p>
+            </div>
+            <div class="skill-item reveal">
+                <div class="skill-icon">🚀</div>
+                <h3>Tools</h3>
+                <p style="color:var(--text-muted); font-size: 0.9rem;">Git, Docker, VS Code</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title reveal">ผลงาน<span>ที่โดดเด่น</span></h2>
+        <div class="projects-grid">
+
+            <div class="project-card reveal">
+                <div class="project-img project-img-1"></div>
+                <div class="project-content">
+                    <h3 class="project-title">E-Commerce Platform</h3>
+                    <p class="project-desc">แพลตฟอร์มขายสินค้าออนไลน์ พร้อมระบบตะกร้าสินค้าและการชำระเงินที่สมบูรณ์แบบ
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-img project-img-2"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Dashboard Analytics</h3>
+                    <p class="project-desc">ระบบจัดการและแสดงผลข้อมูลเชิงสถิติสำหรับองค์กร ด้วยกราฟที่สวยงาม</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Tailwind</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-img project-img-3"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Portfolio Website</h3>
+                    <p class="project-desc">เว็บไซต์ส่วนตัวสำหรับแสดงผลงานและประวัติการทำงาน ออกแบบด้วยความทันสมัย</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-container reveal">
+            <h2 class="section-title">มาร่วมงาน<span>ด้วยกัน</span></h2>
+            <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 2rem;">หากคุณสนใจในผลงานของฉัน
+                หรือมีโปรเจกต์ที่อยากให้ฉันช่วยสร้างสรรค์ สามารถติดต่อมาได้เลย!</p>
+            <a href="mailto:your.email@example.com" class="btn btn-primary"
+                style="font-size: 1.2rem; padding: 1rem 3rem;">ส่งอีเมลหาฉัน</a>
+
+            <div class="contact-info">
+                <a href="#" class="social-link" title="GitHub">💻</a>
+                <a href="#" class="social-link" title="LinkedIn">💼</a>
+                <a href="#" class="social-link" title="Twitter">💬</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 [ชื่อของคุณ]. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+</body>
+
+</html>
