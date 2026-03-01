@@ -1,7 +1,7 @@
 // ===== CONFIGURATION =====
 const RPC_URL = 'https://rpc-l1.jibchain.net';
 const CONTRACT_ADDRESS = '0xCd3Ec17ddFDa24f8F97131fa0FDf20e7cbd1A8Bb';
-const SENSOR_ADDRESS = '0xB0E58B011924E049CE4B4D62298EDF43DFF0BDD'; // Target sensor (Universal Signer/Owner)
+const SENSOR_ADDRESS = '0xcB0e58b011924e049ce4b4D62298Edf43dFF0BDd'; // Correct active sensor address
 
 const ABI = [
     {
@@ -50,15 +50,15 @@ async function fetchData() {
         // We'll try querying with the sensor address found in research.
         const record = await contract.getLatestRecord(SENSOR_ADDRESS);
 
-        const timestamp = record.timestamp.toNumber();
+        const timestamp = record.timestamp.toNumber() * 1000; // Convert to ms
         const values = record.values; // int256[]
 
-        // Values mapping (from research):
-        // [0] d_radar_water_depth (scaled by 10,000)
-        // [4] d_battery_voltage (scaled by 100)
+        // Values mapping (Corrected):
+        // [0] battery_voltage (scaled by 100)
+        // [6] water_depth (scaled by 10,000)
 
-        const rawDepth = values[0].toNumber();
-        const rawBattery = values[4].toNumber();
+        const rawBattery = values[0].toNumber();
+        const rawDepth = values[6].toNumber();
 
         const depth = rawDepth / 10000;
         const battery = rawBattery / 100;
