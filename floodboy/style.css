@@ -63,8 +63,13 @@ body {
 }
 
 @keyframes move {
-    from { transform: translate(0, 0); }
-    to { transform: translate(10%, 10%); }
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(10%, 10%);
+    }
 }
 
 /* Glassmorphism Container */
@@ -103,6 +108,7 @@ header {
     font-weight: 700;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -135,9 +141,17 @@ header {
 }
 
 @keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.3; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 /* Dashboard Content */
@@ -200,8 +214,13 @@ header {
     gap: 4px;
 }
 
-.stat-value #depth-value { color: var(--primary); }
-.stat-value #battery-value { color: #fbbf24; }
+.stat-value #depth-value {
+    color: var(--primary);
+}
+
+.stat-value #battery-value {
+    color: #fbbf24;
+}
 
 .unit {
     font-size: 1rem;
@@ -263,7 +282,7 @@ footer {
     .stats-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .glass-container {
         padding: 24px;
     }
