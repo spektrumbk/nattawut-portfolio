@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FloodBoy | IoT-Powered Blockchain</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="application/javascript"></script>
+</head>
+
+<body>
+    <div class="glass-container">
+        <header>
+            <div class="logo">
+                <span class="icon">🌊</span>
+                <h1>FloodBoy</h1>
+            </div>
+            <div class="status-badge" id="network-status">
+                <span class="dot pulse"></span>
+                <span class="text">Connecting to JIBCHAIN...</span>
+            </div>
+        </header>
+
+        <main class="dashboard">
+            <section class="hero">
+                <p class="subtitle">Real-time Flood Monitoring Dashboard</p>
+                <p class="description">Decentralized sensor data verified on JIBCHAIN Blockchain.</p>
+            </section>
+
+            <div class="stats-grid">
+                <div class="stat-card glass-card" id="card-depth">
+                    <div class="stat-header">
+                        <span class="label">Water Depth</span>
+                        <span class="icon">📏</span>
+                    </div>
+                    <div class="stat-value">
+                        <span id="depth-value">--.---</span>
+                        <span class="unit">m</span>
+                    </div>
+                    <div class="stat-footer">
+                        <span class="trend" id="depth-trend">Loading...</span>
+                    </div>
+                </div>
+
+                <div class="stat-card glass-card" id="card-battery">
+                    <div class="stat-header">
+                        <span class="label">Battery Voltage</span>
+                        <span class="icon">🔋</span>
+                    </div>
+                    <div class="stat-value">
+                        <span id="battery-value">--.-</span>
+                        <span class="unit">V</span>
+                    </div>
+                    <div class="stat-footer">
+                        <span id="battery-status">Checking...</span>
+                    </div>
+                </div>
+            </div>
+
+            <section class="metadata glass-card">
+                <div class="meta-item">
+                    <span class="meta-label">Last Updated:</span>
+                    <span id="last-update" class="meta-value">--:--:--</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Sensor ID:</span>
+                    <span id="sensor-id" class="meta-value">FloodBoy001</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Contract Address:</span>
+                    <a href="https://exp-l1.jibchain.net/address/0xCd3Ec17ddFDa24f8F97131fa0FDf20e7cbd1A8Bb"
+                        target="_blank" class="meta-value truncate">0xCd3Ec...A8Bb</a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 FloodBoy Project | Powered by Laris Labs & JIBCHAIN</p>
+        </footer>
+    </div>
+
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
